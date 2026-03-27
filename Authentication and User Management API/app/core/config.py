@@ -1,0 +1,5 @@
+SECRET_KEY = "supersecretkey"
+ALGORITHIM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+APP_NAME = "Authentication"
+VERSION = "1.0.0"

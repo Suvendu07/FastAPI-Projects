@@ -1,0 +1,15 @@
+Project Idea
+
+User Authentication API
+
+Features:
+
+Register user
+
+Login user
+
+Get current user (protected)
+
+Update profile
+
+Delete account
