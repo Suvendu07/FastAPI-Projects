@@ -17,7 +17,7 @@ def get_current_user(token: str = Depends(oauth2_schema)):
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHIM])
         username = payload.get("sub")
         if username not in users_db:
-            raise HTTPException(status_code=401, detail="invalid user")
+            raise HTTPException(status_code=401, detail="invalid users")
         return users_db[username]
     except JWTError:
         raise HTTPException(status_code=401, detail="invalid token")
@@ -36,7 +36,7 @@ def register(user: UserCreate):
     users_db[user.username] = {
         "username": user.username,
         "email": user.email,
-        "password": hash_password(user.password)  # ✅ hash before saving
+        "password": hash_password(user.password)  # 
     }
     return user
 
