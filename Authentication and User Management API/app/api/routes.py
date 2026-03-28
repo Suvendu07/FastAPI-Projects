@@ -36,7 +36,7 @@ def register(user: UserCreate):
     users_db[user.username] = {
         "username": user.username,
         "email": user.email,
-        "password": hash_password(user.password)  # 
+        "password": hash_password(user.password)  
     }
     return user
 
