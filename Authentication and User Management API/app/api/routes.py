@@ -31,7 +31,7 @@ def home_page():
 @router.post("/register", response_model=UserRespones)
 def register(user: UserCreate):
     if user.username in users_db:
-        raise HTTPException(status_code=400, detail="user already exists")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="user already exists")
 
     users_db[user.username] = {
         "username": user.username,
@@ -45,7 +45,7 @@ def register(user: UserCreate):
 def user_login(user: UserLogin):
     db_user = users_db.get(user.username)
     if not db_user or not verify_password(user.password, db_user["password"]):
-        raise HTTPException(status_code=401, detail="invalid credentials")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid credentials")
 
     token = create_access_token({"sub": user.username})
     return {"access_token": token}
