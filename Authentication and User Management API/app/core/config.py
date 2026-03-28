@@ -1,4 +1,4 @@
-SECRET_KEY = "supersecretkey"
+SECRET_KEY = "ajhdsadasdbsajsdajhsjaksdsah"
 ALGORITHIM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 APP_NAME = "Authentication"
