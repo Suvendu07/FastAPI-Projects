@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 
@@ -17,10 +17,10 @@ def get_current_user(token: str = Depends(oauth2_schema)):
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHIM])
         username = payload.get("sub")
         if username not in users_db:
-            raise HTTPException(status_code=401, detail="invalid users")
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid users")
         return users_db[username]
     except JWTError:
-        raise HTTPException(status_code=401, detail="invalid token")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid token")
 
 
 @router.get("/")
