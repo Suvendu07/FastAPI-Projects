@@ -1,0 +1,13 @@
+Project Idea
+
+File Processing API
+
+Flow:
+
+User uploads a file
+
+API starts processing in background
+
+User checks job status
+
+User deletes job if needed
