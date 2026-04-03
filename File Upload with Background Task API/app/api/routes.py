@@ -69,7 +69,7 @@ def get_job_status():
     
     job = jobs_db
     if not job:
-        raise HTTPException(status_code=404, detail="job not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="job not found")
     
     
     return job
@@ -79,7 +79,7 @@ def get_job_status():
 @router.delete("/jobs/{job_id}")
 def delete_job(job_id: str):
     if job_id not in jobs_db:
-        raise HTTPException(status_code=404, detail="job not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="job not found")
     
     
     jobs_db.pop(job_id)
