@@ -54,7 +54,7 @@ def get_job_status(job_id : str):
     
     job = jobs_db.get(job_id)
     if not job:
-        raise HTTPException(status_code=404, detail="job not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="job not found")
     
     
     return {
