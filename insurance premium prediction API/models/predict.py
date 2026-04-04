@@ -6,7 +6,7 @@ with open('models/model.pkl','rb') as f:
     model = pickle.load(f)
     
 """We create it manually but the model version actual comes from MLFlow.there is a model registry ek he that track the version of the model."""
-MODEL_VERSION = '1.0.0'
+MODEL_VERSION = '1.0.1'
     
 class_labels = model.classes_.tolist()
     
