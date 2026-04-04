@@ -14,6 +14,6 @@ class PredictionResponse(BaseModel):
     )
     class_probabilities: Dict[str, float] = Field(
         ...,
-        description="Probability distribution across all possible classes",
+        description="Probability distribution across all possible class",
         example={"Low": 0.01, "Medium": 0.15, "High": 0.84}
     )
