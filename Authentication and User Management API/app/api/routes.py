@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import APIRouter, Depends, HTTPException, status, Response, Request
 from jose import jwt, JWTError
 
 from app.core.config import SECRET_KEY, ALGORITHIM
@@ -8,12 +7,15 @@ from app.schema.token import Token
 from app.core.security import hash_password, verify_password, create_access_token
 from app.db.fake_db import users_db
 
+
 router = APIRouter()
-oauth2_schema = OAuth2PasswordBearer(tokenUrl="login")
 
 
-def get_current_user(token: str = Depends(oauth2_schema)):
+def get_current_user(request : Request):
     try:
+        
+        token = request.cookies.get("token")
+        
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHIM])
         username = payload.get("sub")
         if username not in users_db:
@@ -41,13 +43,16 @@ def register(user: UserCreate):
     return user
 
 
-@router.post("/login", response_model=Token)
-def user_login(user: UserLogin):
+@router.post("/login",response_model=Token)
+def user_login(user: UserLogin, response : Response):
     db_user = users_db.get(user.username)
     if not db_user or not verify_password(user.password, db_user["password"]):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid credentials")
 
     token = create_access_token({"sub": user.username})
+    
+    access_token = response.set_cookie(key="token", value=token)
+    
     return {"access_token": token}
 
 
