@@ -19,7 +19,7 @@ os.makedirs(UPLOAD_DIR, exist_ok= True)
 
 @router.get("/")
 def home():
-    return {"message":"API run Successfuly"}
+    return {"message":"API runs Successfuly"}
 
 
 
