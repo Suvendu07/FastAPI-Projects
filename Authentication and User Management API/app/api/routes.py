@@ -53,8 +53,9 @@ def user_login(user: UserLogin, response : Response):
     
     access_token = response.set_cookie(key="token", value=token)
     
-    return {"access_token": token}
-
+    return {
+        "message" : "Login successfully"
+    }
 
 @router.get("/me", response_model=UserRespones)
 def read_me(current_user: dict = Depends(get_current_user)):
