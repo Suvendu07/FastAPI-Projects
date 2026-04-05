@@ -8,4 +8,4 @@ app = FastAPI(
     version=VERSION
 )
 
-app.include_router(router)
+app.include_router(router, prefix="/auth")
