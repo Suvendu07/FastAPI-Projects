@@ -1,0 +1,15 @@
+PDF / TXT
+   ↓
+Document Loader (LangChain)
+   ↓
+Text Splitter (chunks)
+   ↓
+Embedding Model (real)
+   ↓
+Vector Store
+   ↓
+Retriever
+   ↓
+LLM
+   ↓
+Answer

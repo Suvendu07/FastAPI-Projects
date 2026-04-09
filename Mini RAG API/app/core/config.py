@@ -1,0 +1,2 @@
+APP_NAME = "Mini RAG API"
+VERSION = "1.0.0"
