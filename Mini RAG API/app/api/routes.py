@@ -24,7 +24,7 @@ def upload_file(file: UploadFile = File(...)):
 
     build_rag(file_path)
 
-    return {"message": "Doc processed successfully"}
+    return {"message": "Document processed successfully"}
 
 
 @router.post("/ask", response_model=GiveResponse)
