@@ -9,7 +9,7 @@ def load_document(file_path: str):
         return loader.load()
 
     elif ext == ".txt":
-        loader = TextLoader(file_path, encoding="utf-8")
+        loader = PyPDFLoader(file_path, encoding = "utf-8")
         return loader.load()
 
     else:
