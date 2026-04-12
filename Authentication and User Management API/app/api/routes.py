@@ -33,7 +33,7 @@ def home_page():
 @router.post("/register", response_model=UserRespones)
 def register(user: UserCreate):
     if user.username in users_db:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="user already exists")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="user already exist")
 
     users_db[user.username] = {
         "username": user.username,
