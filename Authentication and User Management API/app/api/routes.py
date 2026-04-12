@@ -22,7 +22,7 @@ def get_current_user(request : Request):
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid users")
         return users_db[username]
     except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid token")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="invalid tokens")
 
 
 @router.get("/")
